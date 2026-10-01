@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#059669">
+<meta name="description" content="Польза24 — бесплатные финансовые, строительные и бытовые калькуляторы.">
+<title>Польза24 — Бесплатные калькуляторы</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f8fafc;color:#172033}
+header{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 12px #0001}
+nav{max-width:1100px;margin:auto;min-height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 18px}
+.logo{display:flex;gap:10px;align-items:center}.logo-icon{width:42px;height:42px;border-radius:12px;background:#059669;color:#fff;display:grid;place-items:center;font-size:23px}
+.logo b{font-size:20px}.logo small{display:block;color:#64748b}
+nav a,nav button{border:0;background:none;color:#334155;font-weight:600;text-decoration:none;margin-left:18px;cursor:pointer}
+.hero{background:linear-gradient(135deg,#10b981,#047857);color:white;padding:65px 18px}
+.wrap{max-width:1100px;margin:auto}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
+h1{font-size:46px;line-height:1.1;margin:0 0 20px}.hero p{font-size:19px;color:#d1fae5;line-height:1.6}
+.btn{border:0;border-radius:10px;padding:13px 20px;font-weight:700;cursor:pointer}.primary{background:#059669;color:white}.white{background:white;color:#047857}.outline{background:transparent;border:2px solid white;color:white}
+.hero-card{background:#ffffff18;border:1px solid #ffffff44;border-radius:22px;padding:30px;text-align:center}.hero-card .big{font-size:70px}
+.ad{margin:22px auto;padding:20px;text-align:center;border:2px dashed #cbd5e1;border-radius:12px;color:#64748b;background:white}
+section{padding:55px 18px}.center{text-align:center}.muted{color:#64748b}.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+.card{background:white;border-radius:18px;padding:24px;box-shadow:0 7px 25px #0f172a12;transition:.2s}.card:hover{transform:translateY(-3px)}
+.icon{font-size:35px;margin-bottom:10px}.card h3{margin:8px 0;font-size:21px}.card p{color:#64748b;min-height:50px;line-height:1.5}
+footer{background:#0f172a;color:#cbd5e1;padding:35px 18px;text-align:center}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:50;padding:18px;align-items:center;justify-content:center}.modal.show{display:flex}
+.modal-box{background:white;width:min(600px,100%);max-height:90vh;overflow:auto;border-radius:18px;padding:25px}.modal-head{display:flex;justify-content:space-between;align-items:center}
+.close{border:0;background:#f1f5f9;border-radius:9px;padding:8px 12px;cursor:pointer;font-size:18px}
+input,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px;margin:6px 0 14px;font-size:16px}
+.result{margin-top:18px;padding:16px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;line-height:1.7}
+.admin-item{padding:15px;background:#f8fafc;border-radius:10px;margin:10px 0}
+.hidden{display:none!important}
+@media(max-width:800px){.hero-grid{grid-template-columns:1fr}.tools{grid-template-columns:1fr 1fr}h1{font-size:37px}nav .links{display:none}}
+@media(max-width:520px){.tools{grid-template-columns:1fr}.hero{padding:45px 18px}h1{font-size:33px}}
+</style>
+</head>
+<body>
+<header><nav>
+<div class="logo"><div class="logo-icon">🌿</div><div><b>Польза24</b><small>Бесплатные инструменты</small></div></div>
+<div class="links"><a href="#tools">Инструменты</a><a href="#about">О проекте</a><button onclick="openAdmin()">🔐 Админ</button></div>
+<button class="btn primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Начать</button>
+</nav></header>
+
+<section class="hero"><div class="wrap hero-grid">
+<div><h1>Бесплатные инструменты, которые помогают экономить деньги</h1>
+<p>Кредит, зарплата, строительство, площадь, ИМТ и валюты — полезные расчёты прямо с телефона.</p>
+<button class="btn white" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Выбрать инструмент</button>
+</div>
+<div class="hero-card"><div class="big">🧮</div><h2>Польза24</h2><p>Быстро. Просто. Бесплатно.</p></div>
+</div></section>
+
+<div class="wrap"><div class="ad">РЕКЛАМНЫЙ БЛОК<br><small>Здесь можно разместить рекламу после одобрения рекламной сети.</small></div></div>
+
+<section id="tools"><div class="wrap"><div class="center"><h2>Популярные инструменты</h2><p class="muted">Выберите калькулятор</p></div>
+<div class="tools">
+<div class="card"><div class="icon">💳</div><h3>Кредит</h3><p>Ежемесячный платёж, переплата и общая сумма.</p><button class="btn primary" onclick="calc('credit')">Рассчитать</button></div>
+<div class="card"><div class="icon">💰</div><h3>Зарплата</h3><p>Расчёт зарплаты после указанного процента вычетов.</p><button class="btn primary" onclick="calc('salary')">Рассчитать</button></div>
+<div class="card"><div class="icon">🏗️</div><h3>Строительство</h3><p>Расчёт объёма бетона для прямоугольного фундамента.</p><button class="btn primary" onclick="calc('construction')">Рассчитать</button></div>
+<div class="card"><div class="icon">📐</div><h3>Площадь</h3><p>Площадь прямоугольной комнаты или участка.</p><button class="btn primary" onclick="calc('area')">Рассчитать</button></div>
+<div class="card"><div class="icon">⚖️</div><h3>ИМТ</h3><p>Расчёт индекса массы тела по росту и весу.</p><button class="btn primary" onclick="calc('bmi')">Рассчитать</button></div>
+<div class="card"><div class="icon">💱</div><h3>Конвертер валют</h3><p>Конвертация по введённому вами курсу.</p><button class="btn primary" onclick="calc('currency')">Конвертировать</button></div>
+</div>
+<div class="ad">РЕКЛАМНОЕ МЕСТО<br><small>Партнёрская или другая разрешённая реклама.</small></div>
+</div></section>
+
+<section id="about" style="background:#eef2f7"><div class="wrap center"><h2>О Польза24</h2><p class="muted">Сайт предоставляет бесплатные инструменты для повседневных расчётов. Результаты являются справочными и не заменяют консультацию специалиста.</p></div></section>
+
+<footer><div class="wrap"><b>Польза24</b><p>Бесплатные полезные инструменты</p><small>© 2026 Польза24</small></div></footer>
+
+<div id="calcModal" class="modal"><div class="modal-box"><div class="modal-head"><h2 id="modalTitle">Калькулятор</h2><button class="close" onclick="closeModal()">✕</button></div><div id="form"></div></div></div>
+
+<div id="adminModal" class="modal"><div class="modal-box"><div class="modal-head"><h2>🔐 Админ-панель</h2><button class="close" onclick="closeAdmin()">✕</button></div>
+<div id="login"><p class="muted">Введите данные администратора.</p><label>Логин</label><input id="loginName" placeholder="Логин"><label>Пароль</label><input id="loginPass" type="password" placeholder="Пароль"><button class="btn primary" onclick="login()">Войти</button><p id="loginError" style="color:#dc2626"></p></div>
+<div id="dashboard" class="hidden"><div class="result"><b>Вы вошли как администратор.</b><br>Здесь можно управлять локальными настройками сайта.</div><div class="admin-item"><b>Реклама</b><p class="muted">Рекламные места подготовлены. Для реальной рекламы понадобится аккаунт рекламной сети и соблюдение её правил.</p></div><div class="admin-item"><b>Статус сайта</b><p>Публичный HTML-сайт готов к размещению на GitHub Pages.</p></div><button class="btn" onclick="logout()">Выйти</button></div>
+</div></div>
+
+<script>
+const $=id=>document.getElementById(id);
+function openAdmin(){$('adminModal').classList.add('show')}
+function closeAdmin(){$('adminModal').classList.remove('show')}
+function login(){if($('loginName').value==='admin' && $('loginPass').value==='admin123'){localStorage.setItem('p24admin','1');showDash()}else $('loginError').textContent='Неверный логин или пароль'}
+function showDash(){$('login').classList.add('hidden');$('dashboard').classList.remove('hidden')}
+function logout(){localStorage.removeItem('p24admin');$('login').classList.remove('hidden');$('dashboard').classList.add('hidden')}
+if(localStorage.getItem('p24admin')==='1')showDash();
+
+function calc(type){
+$('calcModal').classList.add('show');
+const configs={
+credit:['Кредитный калькулятор',`<label>Сумма кредита</label><input id="a" type="number" value="100000"><label>Годовая ставка (%)</label><input id="b" type="number" value="20"><label>Срок (месяцев)</label><input id="c" type="number" value="12"><button class="btn primary" onclick="doCalc('credit')">Рассчитать</button>`],
+salary:['Калькулятор зарплаты',`<label>Зарплата до вычетов</label><input id="a" type="number" value="10000"><label>Процент вычетов (%)</label><input id="b" type="number" value="13"><button class="btn primary" onclick="doCalc('salary')">Рассчитать</button>`],
+construction:['Строительный калькулятор',`<label>Длина фундамента (м)</label><input id="a" type="number" value="10"><label>Ширина (м)</label><input id="b" type="number" value="0.4"><label>Высота (м)</label><input id="c" type="number" value="0.6"><button class="btn primary" onclick="doCalc('construction')">Рассчитать</button>`],
+area:['Калькулятор площади',`<label>Длина (м)</label><input id="a" type="number" value="5"><label>Ширина (м)</label><input id="b" type="number" value="4"><button class="btn primary" onclick="doCalc('area')">Рассчитать</button>`],
+bmi:['Индекс массы тела',`<label>Вес (кг)</label><input id="a" type="number" value="70"><label>Рост (см)</label><input id="b" type="number" value="175"><button class="btn primary" onclick="doCalc('bmi')">Рассчитать</button>`],
+currency:['Конвертер валют',`<label>Сумма</label><input id="a" type="number" value="100"><label>Курс: сколько единиц второй валюты за 1 единицу первой</label><input id="b" type="number" value="10"><button class="btn primary" onclick="doCalc('currency')">Конвертировать</button>`]};
+$('modalTitle').textContent=configs[type][0];$('form').innerHTML=configs[type][1];window.currentCalc=type
+}
+function doCalc(type){
+let a=+($('a').value||0),b=+($('b').value||0),c=+($('c')?.value||0),r='';
+if(type==='credit'){let m=b/1200,n=c;let pay=m? a*m*Math.pow(1+m,n)/(Math.pow(1+m,n)-1):a/n;r=`Ежемесячный платёж: <b>${pay.toFixed(2)}</b><br>Всего: <b>${(pay*n).toFixed(2)}</b><br>Переплата: <b>${(pay*n-a).toFixed(2)}</b>`}
+if(type==='salary')r=`После вычетов: <b>${(a*(1-b/100)).toFixed(2)}</b>`
+if(type==='construction')r=`Объём бетона: <b>${(a*b*c).toFixed(3)} м³</b>`
+if(type==='area')r=`Площадь: <b>${(a*b).toFixed(2)} м²</b>`
+if(type==='bmi'){let bmi=a/Math.pow(b/100,2);r=`ИМТ: <b>${bmi.toFixed(1)}</b><br>Это справочный показатель и не является медицинским диагнозом.`}
+if(type==='currency')r=`Результат: <b>${(a*b).toFixed(2)}</b>`
+$('form').insertAdjacentHTML('beforeend',`<div class="result">${r}</div>`)
+}
+function closeModal(){$('calcModal').classList.remove('show')}
+window.onclick=e=>{if(e.target.classList.contains('modal'))e.target.classList.remove('show')}
+</script>
+</body>
+</html>
